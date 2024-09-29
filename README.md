@@ -8,6 +8,11 @@ tf-provider-upload is a command-line tool that simplifies uploading Terraform pr
 - GPG Signing: Sign provider files with a GPG key before uploading.
 
 ## Installation:
+**Pre-built binaries:**
+
+Download the pre-built binary for your operating system from [link to releases page](https://github.com/munnep/tf-provider-upload/releases).
+
+**From source:**
 
 Clone this repository and build the binary:
 
