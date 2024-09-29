@@ -1,0 +1,52 @@
+name: Build and Upload Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      packages: write 
+      contents: write  
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.22'  # Update to the Go version you're using
+
+    - name: Build for Linux (amd64)
+      run: |
+        mkdir -p dist
+        GOOS=linux GOARCH=amd64 go build -o dist/publicip-linux-amd64
+
+    - name: Build for macOS (amd64)
+      run: |
+        mkdir -p dist
+        GOOS=darwin GOARCH=amd64 go build -o dist/publicip-darwin-amd64
+
+    - name: Build for macOS (arm64 - M1/M2)
+      run: |
+        mkdir -p dist
+        GOOS=darwin GOARCH=arm64 go build -o dist/publicip-darwin-arm64
+
+    # - name: Build for Windows (amd64)
+    #   run: |
+    #     mkdir -p dist
+    #     GOOS=windows GOARCH=amd64 go build -o dist/publicip-windows-amd64.exe
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          dist/publicip-linux-amd64
+          dist/publicip-darwin-amd64
+          dist/publicip-darwin-arm64
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
