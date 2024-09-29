@@ -40,8 +40,8 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         files: |
-          dist/publicip-linux-amd64
-          dist/publicip-darwin-amd64
-          dist/publicip-darwin-arm64
+          dist/tf-provider-upload-linux-amd64
+          dist/tf-provider-upload-darwin-amd64
+          dist/tf-provider-upload-darwin-arm64
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
