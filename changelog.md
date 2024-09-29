@@ -6,7 +6,7 @@
 - Use the default gpg key from HashiCorp for official providers
 
 
-## [0.0.1] - 2024-09-27
+## [0.0.1] - 2024-09-29
 
 ### Added
 - Initial release of `tf-provider-upload` tool.
