@@ -7,6 +7,17 @@ tf-provider-upload is a command-line tool that simplifies uploading Terraform pr
 - Provider File Upload: Upload your Terraform providers to the private registry in TFE/TFC.
 - GPG Signing: Sign provider files with a GPG key before uploading.
 
+## Prerequisites
+
+Make sure you have the providers downloaded and in the file format of what a provider should be as you download them from the [https://releases.hashicorp.com](https://releases.hashicorp.com/)
+
+The file format should look like the following
+```
+terraform-provider-azurerm_3.107.0_darwin_amd64.zip
+terraform-provider-azurerm_3.107.0_linux_amd64.zip
+```
+
+
 ## Installation:
 **Pre-built binaries:**
 
@@ -76,6 +87,10 @@ terraform-provider-azurerm_3.107.0_linux_amd64.zip
 ```
 2. Set your TFE authentication token via the -token option or the TFE_TOKEN environment variable.
 3. Run the tool to upload the provider to your Terraform Enterprise or Terraform Cloud private registry.
+example:
+```
+
+```
 
 # License:
 

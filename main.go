@@ -81,7 +81,7 @@ func main() {
 }
 
 func tmp_directory() {
-	err := os.Mkdir(".tf-provider-upoad", 0750)
+	err := os.Mkdir(".tf-provider-upload", 0750)
 	if err != nil && !os.IsExist(err) {
 		log.Fatal(err)
 	}
