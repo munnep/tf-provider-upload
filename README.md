@@ -89,7 +89,34 @@ terraform-provider-azurerm_3.107.0_linux_amd64.zip
 3. Run the tool to upload the provider to your Terraform Enterprise or Terraform Cloud private registry.
 example:
 ```
+./tf-provider-upload \     
+  -gpg_key "9504BBA9070091A9DCD052FEEBC6C254C4210E5B" \
+  -organization "test" \
+  -providerfolder "./providerfiles" \
+  -tfeHostname "tfe66.aws.munnep.com"
+```
 
+output:
+```
+Upload provider to private registry
+Check the gpg tool is installed
+GPG is installed.
+gpgKeyPublic file does not exist
+gpg public key created successfully
+Check the shasum tool is installed
+shasum is installed.
+SHA256SUM file generated successfully.
+Signature file removed successfully
+SHA256SUM signature file generated successfully.
+PGP public signature uploading
+Provider private registry created
+Provider version created
+SHA256SUMS file uploaded successfully
+SHA256SUMS.sig file uploaded successfully
+Provider version created
+starting uploading binaries for: terraform-provider-azurerm_3.107.0_darwin_amd64.zip
+Provider version created
+starting uploading binaries for: terraform-provider-azurerm_3.107.0_linux_amd64.zip
 ```
 
 # License:
