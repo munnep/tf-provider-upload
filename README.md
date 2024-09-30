@@ -7,6 +7,17 @@ tf-provider-upload is a command-line tool that simplifies uploading Terraform pr
 - Provider File Upload: Upload your Terraform providers to the private registry in TFE/TFC.
 - GPG Signing: Sign provider files with a GPG key before uploading.
 
+## Prerequisites
+
+Make sure you have the providers downloaded and in the file format of what a provider should be as you download them from the [https://releases.hashicorp.com](https://releases.hashicorp.com/)
+
+The file format should look like the following
+```
+terraform-provider-azurerm_3.107.0_darwin_amd64.zip
+terraform-provider-azurerm_3.107.0_linux_amd64.zip
+```
+
+
 ## Installation:
 **Pre-built binaries:**
 
@@ -76,7 +87,38 @@ terraform-provider-azurerm_3.107.0_linux_amd64.zip
 ```
 2. Set your TFE authentication token via the -token option or the TFE_TOKEN environment variable.
 3. Run the tool to upload the provider to your Terraform Enterprise or Terraform Cloud private registry.
+example:
+```
+./tf-provider-upload \     
+  -gpg_key "9504BBA9070091A9DCD052FEEBC6C254C4210E5B" \
+  -organization "test" \
+  -providerfolder "./providerfiles" \
+  -tfeHostname "tfe66.aws.munnep.com"
+```
 
+output:
+```
+Upload provider to private registry
+Check the gpg tool is installed
+GPG is installed.
+gpgKeyPublic file does not exist
+gpg public key created successfully
+Check the shasum tool is installed
+shasum is installed.
+SHA256SUM file generated successfully.
+Signature file removed successfully
+SHA256SUM signature file generated successfully.
+PGP public signature uploading
+Provider private registry created
+Provider version created
+SHA256SUMS file uploaded successfully
+SHA256SUMS.sig file uploaded successfully
+Provider version created
+starting uploading binaries for: terraform-provider-azurerm_3.107.0_darwin_amd64.zip
+Provider version created
+starting uploading binaries for: terraform-provider-azurerm_3.107.0_linux_amd64.zip
+```
+ 
 # License:
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
